@@ -1,12 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import "@angular/compiler";
 
 @Component({
   selector: 'lib-input-text',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './input-text.component.html',
-  styleUrl: './input-text.component.css'
+  styleUrl: './input-text.component.css',
+  exportAs: 'InputTextComponent'
 })
 export class InputTextComponent implements OnInit{
   @Input() formGroup: FormGroup = new FormGroup({});

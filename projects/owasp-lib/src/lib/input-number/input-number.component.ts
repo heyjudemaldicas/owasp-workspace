@@ -1,12 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'lib-input-number',
-  imports: [],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './input-number.component.html',
-  styleUrl: './input-number.component.css'
+  styleUrl: './input-number.component.css',
+  exportAs: 'InputNumberComponent'
 })
 
 export class InputNumberComponent implements OnInit {

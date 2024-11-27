@@ -1,8 +1,8 @@
 <div [formGroup]="formGroup">
     <label for="number">{{ label }}</label>
     <input id="number" formControlName="number" />
-    <div *ngIf="number.invalid && (number.dirty || number.touched)">
-      <div *ngIf="number.errors?.required">Number is required.</div>
-      <div *ngIf="number.errors?.pattern">Invalid number format.</div>
+    <div *ngIf="number?.invalid && (number?.dirty || number?.touched)">
+      <div *ngIf="number?.errors?.['required']">Number is required.</div>
+      <div *ngIf="number?.errors?.['pattern']">Invalid number format.</div>
     </div>
-  </div>
+</div>

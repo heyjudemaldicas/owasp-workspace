@@ -3,16 +3,13 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
-    "declaration": true,
-    "declarationMap": true,
-    "inlineSources": true,
+    "outDir": "../../out-tsc/app",
     "types": []
   },
-  "exclude": [
-    "**/*.spec.ts"
+  "files": [
+    "src/main.ts"
   ],
-  "angularCompilerOptions": {
-    "enableIvy": true
-  }
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }

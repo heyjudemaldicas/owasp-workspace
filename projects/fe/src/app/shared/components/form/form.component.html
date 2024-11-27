@@ -1,0 +1,5 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <lib-input-text [parentForm]="form" label="Text"></lib-input-text>
+    <lib-input-number [parentForm]="form" label="Number"></lib-input-number>
+    <button type="submit" [disabled]="form.invalid">Submit</button>
+</form>
