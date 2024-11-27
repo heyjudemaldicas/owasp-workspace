@@ -1,0 +1,8 @@
+<div [formGroup]="formGroup">
+    <label for="text">{{ label }}</label>
+    <input id="text" formControlName="text" />
+    <div *ngIf="text.invalid && (text.dirty || text.touched)">
+        <div *ngIf="text.errors?.required">Text is required.</div>
+        <div *ngIf="text.errors?.pattern">Invalid text format.</div>
+    </div>
+</div>
