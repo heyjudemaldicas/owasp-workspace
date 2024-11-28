@@ -1,0 +1,10 @@
+<div [formGroup]="formGroup" class="input-text-container">
+    <label [for]="controlName" class="label-top">{{ label }}</label>
+    <div class="input-text">
+        <input [id]="controlName" [formControlName]="controlName" [placeholder]="label"/>
+        <div *ngIf="formGroup.get(controlName)?.invalid && (formGroup.get(controlName)?.dirty || formGroup.get(controlName)?.touched)">
+            <div class="error-message" *ngIf="formGroup.get(controlName)?.errors?.['required']">{{ label }} is <strong>required</strong>.</div>
+            <div class="error-message" *ngIf="formGroup.get(controlName)?.errors?.['pattern']">Invalid text format.</div>
+        </div>
+    </div>
+</div>

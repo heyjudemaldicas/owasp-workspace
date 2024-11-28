@@ -1,0 +1,11 @@
+<div [formGroup]="formGroup" class="input-number-container">
+    <label [for]="controlName" class="label-top">{{ label }}</label>
+    <div class="input-number">
+      <input [id]="controlName" [formControlName]="controlName" [placeholder]="label"/>
+      <div *ngIf="formGroup.get(controlName)?.invalid && (formGroup.get(controlName)?.dirty || formGroup.get(controlName)?.touched)">
+        <div class="error-message" *ngIf="formGroup.get(controlName)?.errors?.['required']">{{ label }} is <strong>required</strong>.</div>
+        <div class="error-message" *ngIf="formGroup.get(controlName)?.errors?.['pattern']">Invalid number format.</div>
+        <div class="error-message" *ngIf="formGroup.get(controlName)?.errors?.['max']">{{ label }} must be less than or equal to {{ max }}.</div>
+      </div>
+    </div>
+</div>

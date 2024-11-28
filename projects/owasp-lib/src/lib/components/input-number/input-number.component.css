@@ -1,0 +1,22 @@
+.input-number-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .label-top {
+    margin-bottom: 4px;
+  }
+
+  .input-number input {
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 16px;
+    box-shadow: none;
+    border: 1px solid #a5b3af;
+    border-radius: 4px;
+  }
+  
+  .input-number .error-message {
+    color: red;
+    font-size: 12px;
+  }

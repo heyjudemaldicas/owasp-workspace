@@ -1,6 +1,7 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { InputNumberComponent, InputTextComponent } from 'owasp-lib';
+import { LoggingService } from 'owasp-lib';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,10 @@ import { InputNumberComponent, InputTextComponent } from 'owasp-lib';
 export class FormComponent implements OnInit {
   form: FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private loggingService: LoggingService
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({});
@@ -20,7 +24,7 @@ export class FormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.form.valid) {
-      console.log('Form Value:', this.form.value);
+      this.loggingService.logInfo('Form Value:', this.form.value);
     }
   }
 }

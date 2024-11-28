@@ -1,5 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <lib-input-text [parentForm]="form" label="Text"></lib-input-text>
-    <lib-input-number [parentForm]="form" label="Number"></lib-input-number>
+    <lib-input-text [formGroup]="form" label="First Name" [isRequired]="true" controlName="firstName"></lib-input-text>
+    <lib-input-text [formGroup]="form" label="Last Name" [isRequired]="true" controlName="lastName"></lib-input-text>
+    <lib-input-number [formGroup]="form" label="Age" [max]="100" controlName="age"></lib-input-number>
+    <lib-input-text [formGroup]="form" label="Address" controlName="address"></lib-input-text>
     <button type="submit" [disabled]="form.invalid">Submit</button>
 </form>

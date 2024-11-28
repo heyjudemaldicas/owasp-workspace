@@ -14,21 +14,29 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class InputNumberComponent implements OnInit {
   @Input() formGroup: FormGroup = new FormGroup({});
   @Input() label: string = '';
+  @Input() isRequired: boolean = false;
+  @Input() max: number | undefined;
+  @Input() controlName: string = '';
 
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+    const validators = [Validators.pattern('^[0-9]*$')];
+    if (this.isRequired) {
+      validators.push(Validators.required);
+    }
+    if (this.max !== undefined) {
+      validators.push(Validators.max(this.max));
+    }
+
     this.formGroup.addControl(
-      'number',
-      new FormBuilder().control('', [
-        Validators.required,
-        Validators.pattern('^[0-9]*$')
-      ])
+      this.controlName,
+      new FormBuilder().control('', validators)
     );
   }
 
   get number() {
-    return this.formGroup.get('number');
+    return this.formGroup.get(this.controlName);
   }
 
   sanitize(value: string) {

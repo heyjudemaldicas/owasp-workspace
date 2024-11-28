@@ -14,21 +14,25 @@ import "@angular/compiler";
 export class InputTextComponent implements OnInit{
   @Input() formGroup: FormGroup = new FormGroup({});
   @Input() label: string = '';
+  @Input() isRequired: boolean = false;
+  @Input() controlName: string = '';
 
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+    const validators = [Validators.pattern('^[a-zA-Z0-9 ]*$')];
+    if (this.isRequired) {
+      validators.push(Validators.required);
+    }
+
     this.formGroup.addControl(
-      'text',
-      new FormBuilder().control('', [
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9 ]*$')
-      ])
+      this.controlName,
+      new FormBuilder().control('', validators)
     );
   }
 
   get text() {
-    return this.formGroup.get('text');
+    return this.formGroup.get(this.controlName);
   }
 
   sanitize(value: string) {
